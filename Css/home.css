@@ -1,0 +1,359 @@
+/*=================*/
+/*   RESET / BASE  */
+/*=================*/
+
+body {
+    font-family: "Montserrat", Arial, sans-serif;
+    margin: 0;
+    background-color: #15151E;
+    color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.dm-serif {
+    font-family: "DM Serif Display", serif;
+}
+
+/*=================*/
+/*      HEADER     */
+/*=================*/
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+header:hover {
+    background: rgba(28, 28, 28, 0.85);
+}
+
+.logo {
+    width: 75px;
+}
+
+.container-nav {
+    display: flex;
+    gap: 40px;
+}
+
+.container-nav a:hover {
+    transform: scale(1.15);
+}
+
+/*=================*/
+/*      VIDEO      */
+/*=================*/
+
+.container-video {
+    position: relative;
+    height: 50vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Compatible iframe + video */
+.video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* Trick pour couvrir toute la zone */
+    width: 100vw;
+    height: 56.25vw; /* ratio 16:9 */
+
+    min-width: 100%;
+    min-height: 100%;
+
+    pointer-events: none; /* évite les clics sur YouTube */
+}
+
+/* Ajustement si écran très haut */
+@media (min-aspect-ratio: 16/9) {
+    .video {
+        width: 177.78vh;
+        height: 100vh;
+    }
+}
+
+.content-video {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-size: 3em;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/*=================*/
+/*   PRESENTATION  */
+/*=================*/
+
+.presentation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    padding: 70px 100px;
+}
+
+/* texte à gauche */
+.presentation p {
+    grid-column: 1;
+    max-width: 100%;
+    font-size: 1.3em;
+    line-height: 1.6;
+}
+
+/* titre à gauche */
+.presentation h1 {
+    grid-column: 1;
+}
+
+
+/*=================*/
+/*     SLIDER      */
+/*=================*/
+
+.slider {
+    position: relative;
+    max-width: 800px;
+    height: 400px; /* IMPORTANT */
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: slider 16s infinite;
+}
+
+.slide:nth-child(1) { animation-delay: 0s; }
+.slide:nth-child(2) { animation-delay: 4s; }
+.slide:nth-child(3) { animation-delay: 8s; }
+.slide:nth-child(4) { animation-delay: 12s; }
+
+@keyframes slider {
+    0% { opacity: 0; }
+    5% { opacity: 1; }
+    25% { opacity: 1; }
+    30% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/*=================*/
+/* NOS VALEURS   */
+/*=================*/
+
+.nos-valeurs {
+    background-color: #44444520;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.container-valeur {
+    display: grid;
+    /* Crée 2 colonnes égales */
+    grid-template-columns: 1fr 1fr; 
+    /* Espace entre les lignes et les colonnes */
+    gap: 60px 40px; 
+    /* Centre la grille et limite la largeur pour la lecture */
+    max-width: 1000px;
+    margin: 40px auto 0 auto; 
+}
+
+/* On s'assure que les liens/blocs prennent toute la largeur de la colonne */
+.container-valeur > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.container-valeur img {
+    max-width: 300px; /* Taille augmentée pour remplir l'espace */
+    width: 100%;     /* S'adapte au conteneur */
+    height: auto;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5); /* Ombre plus naturelle */
+    border-radius: 8px;
+}
+
+.container-valeur div:hover {
+    transform: scale(1.05);
+}
+
+/*=================*/
+/*     FOOTER      */
+/*=================*/
+
+footer {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 20px;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .container-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+footer .container-group {
+    display: flex;
+    gap: 60px;
+}
+
+footer .container-droit {
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer .reseau {
+	display: flex;
+	justify-content: center;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	border: 1px solid white;
+}
+
+.container-reseau {
+    display: flex;
+    gap: 10px; /* espace entre les icônes */
+    align-items: center;
+}
+
+
+/*=================*/
+/*   ANIMATION     */
+/*=================*/
+
+.presentation,
+.nos-valeurs,
+.content-video p {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*=================*/
+/*   RESPONSIVE    */
+/*=================*/
+
+@media (max-width: 900px) {
+    .container-video {
+        display: none;
+    }
+
+    .presentation {
+        grid-template-columns: 1fr;
+        padding: 30px;
+    }
+
+    .container-nav {
+        gap: 15px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 500px) {
+    .logo {
+        display: none;
+    }
+
+    .container-nav {
+        font-size: 0.7em;
+    }
+}
+
+
+/*=================*/
+/* VIDEO      */
+/*=================*/
+
+.container-video-build {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Utilise 100% de la hauteur de l'écran */
+    overflow: hidden;
+    display: flex;
+    align-items: center;      /* Centre verticalement */
+    justify-content: center;   /* Centre horizontalement */
+}
+
+.video-build {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto;
+    height: auto;   
+    z-index: -1;
+}
+
+.content-video-build {
+    z-index: 1;
+    text-align: center; /* Centre le texte à l'intérieur du div */
+}
+
+.content-video-build p {
+    color: white;
+    font-family: "DM Serif Display", serif; 
+    font-size: 4rem; /* Ajuste la taille selon tes besoins */
+    line-height: 1.2;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7); /* Ombre pour la lisibilité */
+    margin: 0;
+}
+
+/*=================*/
+/* ANIMATION     */
+/*=================*/
+
+/* On garde ton animation mais on cible bien le nouveau paragraphe */
+.presentation,
+.nos-valeurs,
+.content-video-build p {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

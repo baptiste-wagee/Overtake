@@ -1,0 +1,30 @@
+body {font-family: "Trattatello", serif;}
+
+#titre {
+    width: 80%;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 10%; /* Ajuste la position horizontale */
+    background-color: rgb(0, 0, 0); /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    overflow: hidden; /* Cache le contenu dépassant */
+    text-align: center; /* Centre le texte */
+    line-height: 0px; /* Aligne verticalement le texte dans le conteneur */
+    border-radius: 10px; /* Ajoute des coins arrondis */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Effet d'ombre */
+}
+
+#Presentation{
+    margin-top: 100px;
+    width: 20%;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0%; /* Ajuste la position horizontale */
+    color: rgb(0, 0, 0); /* Couleur du texte */
+    overflow: hidden; /* Cache le contenu dépassant */
+    text-align: center; /* Centre le texte */
+    line-height: 0px; /* Aligne verticalement le texte dans le conteneur */
+    border-radius: 10px; /* Ajoute des coins arrondis */
+}
