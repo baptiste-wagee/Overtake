@@ -37,7 +37,7 @@ L'objectif n'est pas seulement de créer un site fonctionnel, mais également de
 
 ## 📸 Aperçu
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f7dbeeaa-693a-46fb-9caf-28bd4c03410a" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/822e32e4-09cc-4aba-9450-a1ff248a5a50" />
 
 ## 📂 Installation
 
