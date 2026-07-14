@@ -4,7 +4,7 @@
 
 Le site a été entièrement réalisé en **HTML**, **CSS** et **JavaScript**, avec pour objectif principal de progresser en développement front-end tout en créant un site sur un sujet qui me passionne.
 
-## 🌐 Démo
+## 🌐 Liens
 
 👉 https://baptiste-wagee.github.io/Overtake/index.html
 
@@ -24,16 +24,16 @@ L'objectif n'est pas seulement de créer un site fonctionnel, mais également de
 
 ## 🚀 Technologies utilisées
 
-- 🌐 HTML5
-- 🎨 CSS3
-- ⚡ JavaScript (Vanilla)
+- 🌐 HTML
+- 🎨 CSS
+- ⚡ JavaScript
 
 ## 🎯 Objectifs
 
-- Développer un site moderne sur la Formule 1.
-- Améliorer mes compétences en développement front-end.
-- Découvrir de nouvelles techniques de mise en page et d'animations.
-- Construire un projet personnel que je pourrai enrichir au fil du temps.
+- Développer un site moderne sur la Formule 1
+- Améliorer mes compétences en développement front-end ainsi qu'en design
+- Découvrir de nouvelles techniques de mise en page et d'animations et de données 
+- Construire un projet personnel que je pourrai enrichir au fil du temps
 
 ## 📸 Aperçu
 
@@ -47,16 +47,7 @@ Clonez le projet :
 git clone https://github.com/Baptiste-Wagee/Overtake.git
 ```
 
-Puis ouvrez simplement le fichier `index.html` dans votre navigateur.
-
-## 🔮 Améliorations prévues
-
-- Ajout de nouvelles pages
-- Amélioration du responsive
-- Optimisation des performances
-- Animations plus avancées
-- Nouvelles fonctionnalités JavaScript
-- Ajout de davantage de contenu sur la Formule 1
+Puis ouvrez le fichier `index.html` dans votre navigateur.
 
 ## 👨‍💻 Auteur
 
