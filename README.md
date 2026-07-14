@@ -53,7 +53,11 @@ Puis ouvrez le fichier `index.html` dans votre navigateur.
 
 **Baptiste Wagée**
 
-Étudiant en BUT Informatique et passionné de développement ainsi que de Formule 1.
+Projet réalisé par **Baptiste Wagée** ([@baptiste-wagee](https://github.com/baptiste-wagee)) 
+
+## 📄 Licence
+
+Projet à but personel. Ce projet n'est ni affilié ni approuvé par les sociétés ainsi que les marques lié a la f1.
 
 ---
 
