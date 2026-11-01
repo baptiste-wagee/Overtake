@@ -1,0 +1,475 @@
+/* =========================================================
+   1. VARIABLES (couleurs, polices…)
+   Change une valeur ici, elle change partout sur le site.
+   ========================================================= */
+:root {
+    --bg: #0b0b0e;          /* fond de la page */
+    --surface: #141419;     /* fond des cartes */
+    --surface-2: #1b1b22;   /* fond un peu plus clair */
+    --line: #26262f;        /* bordures */
+    --text: #f3f2ef;        /* texte principal */
+    --muted: #9a9aa6;       /* texte secondaire */
+    --accent: #e10600;      /* rouge Overtake */
+
+    --font-title: "Archivo", "Arial Black", sans-serif;
+    --font-body: "Barlow", Arial, sans-serif;
+    --font-label: "Barlow Condensed", "Arial Narrow", sans-serif;
+
+    --radius: 10px;
+    --max-width: 1320px;
+}
+
+/* Thème clair : activé quand on ajoute data-theme="light" sur <html> (voir main.js) */
+[data-theme="light"] {
+    --bg: #f3f3f5;
+    --surface: #ffffff;
+    --surface-2: #ececf0;
+    --line: #dcdce3;
+    --text: #131317;
+    --muted: #5c5c68;
+}
+
+/* =========================================================
+   2. RESET + BASES
+   ========================================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Conteneur centré, réutilisé dans toutes les sections */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section {
+    padding: 56px 0;
+}
+
+/* Titre de section avec la barre rouge devant */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+}
+
+.section-title::before {
+    content: "";
+    width: 40px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+/* Petit texte en majuscules au-dessus des titres */
+.eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+/* =========================================================
+   3. BOUTONS
+   ========================================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+    padding: 0 24px;
+    border-radius: 7px;
+    font-weight: 600;
+    transition: transform 0.15s, background 0.15s;
+}
+
+.btn--primary {
+    background: var(--accent);
+    color: #fff;
+}
+
+.btn--primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn--ghost {
+    border: 1px solid var(--line);
+}
+
+.btn--ghost:hover {
+    background: var(--surface-2);
+}
+
+/* =========================================================
+   4. NAVBAR
+   ========================================================= */
+.nav {
+    position: sticky;           /* reste collée en haut au scroll */
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+}
+
+.nav__inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 68px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-title);
+    font-stretch: 125%;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 1.25rem;
+}
+
+/* Le petit parallélogramme rouge du logo */
+.logo__mark {
+    width: 24px;
+    height: 18px;
+    background: var(--accent);
+    transform: skewX(-20deg);
+}
+
+.nav__links {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-left: 24px;
+}
+
+.nav__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 14px;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+}
+
+.nav__link.is-active {
+    border-bottom-color: var(--accent);
+}
+
+/* Menu déroulant : caché par défaut, visible au survol */
+.nav__item {
+    position: relative;
+    height: 100%;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    padding: 8px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.nav__item:hover .dropdown {
+    display: grid;
+}
+
+.dropdown a {
+    padding: 9px 12px;
+    border-radius: 6px;
+    color: var(--muted);
+}
+
+.dropdown a:hover {
+    background: var(--surface-2);
+    color: var(--text);
+}
+
+.nav__tools {
+    margin-left: auto;          /* pousse les outils tout à droite */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search {
+    height: 42px;
+    width: 260px;
+    padding: 0 18px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface-2);
+    color: var(--text);
+    font: inherit;
+}
+
+.icon-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
+
+.icon-btn:hover {
+    background: var(--surface-2);
+}
+
+.burger {
+    display: none;              /* visible seulement sur mobile */
+}
+
+/* =========================================================
+   5. HERO
+   ========================================================= */
+.hero {
+    padding: 96px 0 72px;
+    /* TODO : remplace ce dégradé par ton image de fond */
+    background: linear-gradient(135deg, #1d1315, #0b0b0e 60%);
+}
+
+.hero__title {
+    font-family: var(--font-title);
+    font-stretch: 118%;
+    font-weight: 850;
+    font-size: clamp(2.3rem, 5.4vw, 4.6rem);   /* taille qui s'adapte à l'écran */
+    line-height: 1;
+    margin: 18px 0 22px;
+}
+
+.hero__title em {
+    color: var(--accent);
+}
+
+.hero__text {
+    max-width: 46ch;
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+
+.hero__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 32px;
+}
+
+/* =========================================================
+   6. LES 4 CARTES
+   ========================================================= */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.card {
+    min-height: 240px;
+    padding: 22px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;   /* texte collé en bas de la carte */
+}
+
+.card h3 {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+}
+
+.card p {
+    color: var(--muted);
+}
+
+/* =========================================================
+   7. CLASSEMENTS + PROCHAIN GP
+   ========================================================= */
+.duo {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 48px;
+}
+
+.standings {
+    list-style: none;
+}
+
+.standings__row {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    align-items: center;
+    padding: 14px 10px;
+    border-bottom: 1px solid var(--line);
+}
+
+.pts {
+    font-weight: 700;
+}
+
+/* Nom de l'écurie sous le nom du pilote */
+.name small {
+    display: block;
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+.next-gp {
+    padding: 26px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+}
+
+.next-gp h3 {
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    margin: 8px 0 4px;
+}
+
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.countdown div {
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    background: var(--surface-2);
+}
+
+.countdown b {
+    display: block;
+    font-family: var(--font-title);
+    font-size: 1.7rem;
+    font-variant-numeric: tabular-nums;  /* les chiffres ne "sautent" pas */
+}
+
+.countdown small {
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+/* =========================================================
+   8. BOUTIQUE
+   ========================================================= */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+}
+
+.product {
+    padding: 14px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+}
+
+.product__img {
+    aspect-ratio: 4 / 3;
+    border-radius: 8px;
+    background: var(--surface-2);   /* TODO : remplace par une <img> */
+    margin-bottom: 12px;
+}
+
+.product__price {
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+/* =========================================================
+   9. FOOTER
+   ========================================================= */
+.footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+/* =========================================================
+   10. RESPONSIVE (tablette et mobile)
+   ========================================================= */
+@media (max-width: 1000px) {
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .duo { grid-template-columns: 1fr; }
+    .search { display: none; }
+}
+
+@media (max-width: 760px) {
+    .burger { display: block; }
+
+    /* Les liens deviennent un menu vertical caché */
+    .nav__links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        height: auto;
+        flex-direction: column;
+        align-items: stretch;
+        margin: 0;
+        padding: 8px 24px 16px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--line);
+    }
+
+    /* La classe "is-open" est ajoutée par main.js quand on clique sur ☰ */
+    .nav__links.is-open { display: flex; }
+
+    .nav__link { padding: 14px 0; }
+    .dropdown { display: none !important; }
+}
+
+@media (max-width: 560px) {
+    .cards { grid-template-columns: 1fr; }
+    .container { padding: 0 16px; }
+}
