@@ -17,7 +17,7 @@ themeBtn.addEventListener("click", () => {
 });
 
 // =========================================================
-// 2. MENU MOBILE (bouton ☰)
+// 2. MENU MOBILE
 // =========================================================
 const burgerBtn = document.getElementById("burgerBtn");
 const navLinks = document.getElementById("navLinks");
@@ -27,7 +27,7 @@ burgerBtn.addEventListener("click", () => {
 });
 
 // =========================================================
-// 3. API JOLPICA : les données F1 automatiques
+// 3. API
 // =========================================================
 // "current" = la saison en cours, donc rien à changer l'an prochain
 const API = "https://api.jolpi.ca/ergast/f1/current";
@@ -37,13 +37,11 @@ async function loadStandings() {
     const list = document.getElementById("standings");
 
     try {
-        // 1. On demande les données à l'API (et on attend la réponse avec "await")
+        // 1. On demande les données à l'API
         const response = await fetch(`${API}/driverStandings.json`);
         const data = await response.json();
-
         // 2. On va chercher le tableau des pilotes dans la réponse
         const drivers = data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-
         // 3. On garde les 5 premiers et on fabrique une ligne HTML pour chacun
         list.innerHTML = drivers.slice(0, 5).map((d) => `
       <li class="standings__row">
@@ -55,10 +53,9 @@ async function loadStandings() {
         <span class="pts">${d.points} pts</span>
       </li>
     `).join("");
-
     } catch (error) {
         // Si l'API ne répond pas, on prévient au lieu de laisser "Chargement…"
-        list.innerHTML = `<li class="standings__row">Classement indisponible pour le moment.</li>`;
+        list.innerHTML = `<li class="standings__row">Classement en chargement...</li>`;
         console.error(error);
     }
 }
@@ -77,7 +74,7 @@ async function loadNextRace() {
         const next = races.find((race) => new Date(`${race.date}T${race.time}`) > now);
 
         if (!next) {
-            document.getElementById("gp-name").textContent = "Saison terminée";
+            document.getElementById("gp-name").textContent = "Saison terminée !";
             return;
         }
 

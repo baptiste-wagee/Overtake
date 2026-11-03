@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overtake – Toute la F1 en un seul endroit</title>
-
-    <!-- Polices Google : Archivo (titres), Barlow (texte), Barlow Condensed (petits labels) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
@@ -13,21 +11,17 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-
 <!-- =====================================================
      NAVBAR
      ===================================================== -->
 <header class="nav">
     <div class="container nav__inner">
-
         <a href="#" class="logo">
             <span class="logo__mark"></span>
             OVERTAKE
         </a>
-
         <nav class="nav__links" id="navLinks">
             <a href="#" class="nav__link is-active">Accueil</a>
-
             <!-- Un lien avec menu déroulant -->
             <div class="nav__item">
                 <button class="nav__link">Championnats ▾</button>
@@ -78,21 +72,34 @@
 
 
     <!-- =====================================================
-         CLASSEMENTS + PROCHAIN GP (côte à côte)
+         CLASSEMENTS + PROCHAIN GP
          ===================================================== -->
     <section class="section">
         <div class="container duo">
 
             <div id="classements">
                 <h2 class="section-title">Classements</h2>
-                <!-- Rempli automatiquement par main.js grâce à l'API -->
+                <!-- Rempli automatiquement par index.js grâce à l'API -->
                 <ol class="standings" id="standings">
                     <li class="standings__row">Chargement du classement…</li>
                 </ol>
             </div>
-
-
-
+            <div id="programme">
+                <h2 class="section-title">Au programme</h2>
+                <div class="next-gp">
+                    <p class="eyebrow">Prochain Grand Prix</p>
+                    <!-- Nom, circuit et date remplis automatiquement par index.js -->
+                    <h3 id="gp-name">Chargement…</h3>
+                    <p id="gp-info"></p>
+                    <!-- Le compte à rebours sera rempli par index.js -->
+                    <div class="countdown" id="countdown">
+                        <div><b id="cd-days">00</b><small>Jours</small></div>
+                        <div><b id="cd-hours">00</b><small>Heures</small></div>
+                        <div><b id="cd-min">00</b><small>Minutes</small></div>
+                        <div><b id="cd-sec">00</b><small>Secondes</small></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </main>
