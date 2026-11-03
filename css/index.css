@@ -473,3 +473,17 @@ img {
     .cards { grid-template-columns: 1fr; }
     .container { padding: 0 16px; }
 }
+
+.product__img {
+    aspect-ratio: 4 / 3;      /* même format pour toutes les cartes */
+    border-radius: 8px;
+    background: var(--surface-2);
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.product__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;      /* l'image entière tient dans la zone, sans être déformée */
+}
