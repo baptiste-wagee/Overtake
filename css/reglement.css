@@ -1,0 +1,512 @@
+/*
+Nom du fichier : reglement.css
+Auteur : Baptiste Wagée
+Date de création : 05 Novembre 2026
+Version : 1.2
+*/
+
+/* =========================================================
+   1. EN-TÊTE DE PAGE
+   ========================================================= */
+.page-hero {
+    padding: 72px 0 40px;
+    background: linear-gradient(135deg, #1d1315, var(--bg) 60%);
+    border-bottom: 1px solid var(--line);
+}
+
+[data-theme="light"] .page-hero {
+    background: linear-gradient(135deg, #fbe9e8, var(--bg) 60%);
+}
+
+.page-hero__title {
+    font-family: var(--font-title);
+    font-stretch: 118%;
+    font-weight: 850;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1;
+    margin: 14px 0 16px;
+}
+
+.page-hero__title em {
+    color: var(--accent);
+}
+
+.page-hero__text {
+    max-width: 52ch;
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+
+/* =========================================================
+   2. SOUS-MENU
+   ========================================================= */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Les ancres ne passent pas sous la navbar + le sous-menu */
+#saison-2026, #points, #weekend, #pneus, #drapeaux, #penalites, #histoire {
+    scroll-margin-top: 130px;
+}
+
+.subnav {
+    position: sticky;
+    top: 68px;                   /* juste sous la navbar */
+    z-index: 90;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+}
+
+.subnav__inner {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;            /* défile sur les petits écrans */
+    scrollbar-width: none;
+}
+
+.subnav a {
+    flex-shrink: 0;
+    padding: 14px 14px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+}
+
+.subnav a:hover {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+}
+
+.lead {
+    max-width: 70ch;
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 28px;
+}
+
+/* =========================================================
+   3. 2026
+   ========================================================= */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.stat {
+    padding: 24px 22px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+}
+
+.stat b {
+    display: block;
+    font-family: var(--font-title);
+    font-stretch: 118%;
+    font-weight: 850;
+    font-size: 2.2rem;
+    line-height: 1.1;
+}
+
+.stat span {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.rules {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 16px 0 32px;
+}
+
+.rule {
+    padding: 22px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+}
+
+.rule h3 {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.rule p {
+    color: var(--muted);
+}
+
+.rule strong {
+    color: var(--text);
+}
+
+/* =========================================================
+   4. TABLEAUX (comparatif, points)
+   ========================================================= */
+.table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+}
+
+.table caption {
+    padding: 16px 20px;
+    text-align: left;
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--muted);
+    background: var(--surface);
+}
+
+.table th,
+.table td {
+    padding: 14px 20px;
+    text-align: left;
+    border-top: 1px solid var(--line);
+}
+
+.table th {
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.table td:first-child {
+    color: var(--muted);
+}
+
+.table td:last-child,
+.table th:last-child {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.table th:last-child {
+    color: var(--accent);
+}
+
+/* Barème des points avec une barre proportionnelle */
+.points {
+    list-style: none;
+    display: grid;
+    gap: 6px;
+}
+
+.points li {
+    display: grid;
+    grid-template-columns: 48px 1fr 40px;
+    align-items: center;
+    gap: 12px;
+}
+
+.points span {
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.points i {
+    height: 26px;
+    width: calc(var(--p) / 25 * 100%);   /* 25 points = barre pleine */
+    min-width: 8px;
+    border-radius: 4px;
+    background: var(--accent);
+    opacity: calc(0.35 + var(--p) / 25 * 0.65);
+}
+
+.points b {
+    font-family: var(--font-title);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.notes {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+}
+
+.notes li {
+    padding-left: 18px;
+    position: relative;
+    color: var(--muted);
+}
+
+.notes li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    transform: skewX(-20deg);
+}
+
+/* =========================================================
+   5. WEEK-END, PNEUS, DRAPEAUX, PÉNALITÉS
+   ========================================================= */
+.weekends {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.weekend {
+    padding: 24px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+}
+
+.weekend--sprint {
+    border-color: var(--accent);
+}
+
+.steps {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.steps li {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: var(--surface-2);
+}
+
+.steps b {
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.weekend__note {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* Pneus : un cercle de la couleur de la gomme */
+.tyres {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+.tyre {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 4px;
+    padding: 24px 14px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+}
+
+.tyre i {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    background: #1a1a1f;
+    border: 8px solid var(--tyre);
+    box-shadow: inset 0 0 0 10px #232329;
+}
+
+.tyre span {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* Drapeaux */
+.flags {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+.flag {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+}
+
+.flag b {
+    display: block;
+}
+
+.flag span {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.flag__swatch {
+    flex-shrink: 0;
+    width: 56px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+}
+
+.flag--green { background: #1faa4b; }
+.flag--yellow { background: #ffd400; }
+.flag--red { background: #e10600; }
+.flag--blue { background: #1e6fd9; }
+.flag--white { background: #ffffff; }
+.flag--black { background: #000000; }
+.flag--slippery { background: repeating-linear-gradient(90deg, #ffd400 0 8px, #e10600 8px 16px); }
+.flag--warning { background: linear-gradient(135deg, #000 50%, #fff 50%); }
+.flag--meatball { background: radial-gradient(circle, #ff7a00 0 9px, #000 10px); }
+.flag--chequered {
+    background: conic-gradient(#000 25%, #fff 0 50%, #000 0 75%, #fff 0) 0 0 / 14px 14px;
+}
+
+/* Pénalités */
+.penalties {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 12px;
+}
+
+.penalties li {
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+}
+
+.penalties b {
+    display: block;
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.penalties span {
+    color: var(--muted);
+}
+
+/* =========================================================
+   6. HISTOIRE (frise)
+   ========================================================= */
+.timeline {
+    list-style: none;
+    position: relative;
+    display: grid;
+    gap: 14px;
+    padding-left: 28px;
+}
+
+/* La ligne verticale de la frise */
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--line);
+}
+
+.timeline li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+}
+
+/* Le point sur la ligne */
+.timeline li::before {
+    content: "";
+    position: absolute;
+    left: -28px;
+    top: 24px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--muted);
+}
+
+.timeline b {
+    font-family: var(--font-title);
+    font-stretch: 118%;
+    font-weight: 850;
+    font-size: 1.3rem;
+}
+
+.timeline h3 {
+    font-size: 1.05rem;
+    margin-bottom: 2px;
+}
+
+.timeline p {
+    color: var(--muted);
+}
+
+.timeline .is-now {
+    border-color: var(--accent);
+}
+
+.timeline .is-now::before {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.timeline .is-now b {
+    color: var(--accent);
+}
+
+/* =========================================================
+   7. RESPONSIVE
+   ========================================================= */
+@media (max-width: 1000px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .tyres { grid-template-columns: repeat(3, 1fr); }
+    .weekends { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+    .page-hero { padding: 48px 0 28px; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .stat b { font-size: 1.7rem; }
+    .tyres { grid-template-columns: repeat(2, 1fr); }
+    .steps li { grid-template-columns: 1fr; gap: 2px; }
+    .timeline li { grid-template-columns: 1fr; gap: 6px; }
+    .table th, .table td { padding: 12px 14px; }
+}

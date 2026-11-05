@@ -1,10 +1,320 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Règlement – Overtake</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
+
+    <!-- index.css = base commune (couleurs, navbar, footer…) / pages.css = styles des pages Pilotes et Règlement -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/reglement.css">
 </head>
 <body>
+<!-- =====================================================
+     NAVBAR (identique à l'accueil)
+     ===================================================== -->
+<header class="nav">
+    <div class="container nav__inner">
+        <a href="index.html" class="logo">
+            <span class="logo__mark"></span>
+            OVERTAKE
+        </a>
+        <nav class="nav__links" id="navLinks">
+            <a href="index.html" class="nav__link">Accueil</a>
+            <div class="nav__item">
+                <button class="nav__link">Championnats ▾</button>
+                <div class="dropdown">
+                    <a href="index.html#classements">Classement pilotes</a>
+                    <a href="index.html#classements">Classement constructeurs</a>
+                    <a href="index.html#programme">Calendrier 2026</a>
+                </div>
+            </div>
+            <a href="pilote.html" class="nav__link">Pilotes</a>
+            <a href="equipe.html" class="nav__link">Équipes</a>
+            <a href="reglement.html" class="nav__link is-active">Règlement</a>
+            <a href="index.html#boutique" class="nav__link">Boutique</a>
+        </nav>
 
+        <div class="nav__tools">
+            <label>
+                <input type="search" class="search" placeholder="Rechercher un pilote, une équipe…">
+            </label>
+            <button class="icon-btn" id="themeBtn" aria-label="Changer de thème">◐</button>
+            <button class="icon-btn burger" id="burgerBtn" aria-label="Menu">☰</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- =====================================================
+         EN-TÊTE DE PAGE
+         ===================================================== -->
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">Formule 1 · Règlement</p>
+            <h1 class="page-hero__title">Le <em>règlement</em></h1>
+            <p class="page-hero__text">
+                Les nouvelles voitures 2026, les points, le déroulé d'un week-end, les drapeaux,
+                les pénalités et l'évolution des règles depuis 1950.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sous-menu : reste collé sous la navbar quand on descend -->
+    <nav class="subnav" aria-label="Sections du règlement">
+        <div class="container subnav__inner">
+            <a href="#saison-2026">2026</a>
+            <a href="#points">Les points</a>
+            <a href="#weekend">Le week-end</a>
+            <a href="#pneus">Pneus</a>
+            <a href="#drapeaux">Drapeaux</a>
+            <a href="#penalites">Pénalités</a>
+            <a href="#histoire">Histoire</a>
+        </div>
+    </nav>
+
+    <!-- =====================================================
+         2026 : LA NOUVELLE ÈRE
+         ===================================================== -->
+    <section class="section" id="saison-2026">
+        <div class="container">
+            <h2 class="section-title">La révolution 2026</h2>
+            <p class="lead">
+                En 2026, la F1 change tout : nouveaux moteurs, nouvelles voitures et nouvelle façon de dépasser.
+                Les monoplaces sont plus petites, plus légères, et la moitié de leur puissance vient désormais de l'électrique.
+            </p>
+
+            <div class="stats">
+                <div class="stat">
+                    <b>50 / 50</b>
+                    <span>Puissance thermique / électrique</span>
+                </div>
+                <div class="stat">
+                    <b>350 kW</b>
+                    <span>Pour la partie électrique, contre 120 kW avant</span>
+                </div>
+                <div class="stat">
+                    <b>−30 kg</b>
+                    <span>Des voitures plus légères, autour de 770 kg</span>
+                </div>
+                <div class="stat">
+                    <b>100 %</b>
+                    <span>Carburant durable</span>
+                </div>
+            </div>
+
+            <div class="rules">
+                <article class="rule">
+                    <h3>Aérodynamique active</h3>
+                    <p>Les ailerons avant et arrière bougent. Mode <strong>Corner</strong> pour coller à la piste dans les virages, mode <strong>Straight</strong> pour aller plus vite en ligne droite.</p>
+                </article>
+                <article class="rule">
+                    <h3>Fin du DRS</h3>
+                    <p>Il est remplacé par l'<strong>Overtake Mode</strong> : à moins d'une seconde de la voiture devant, le pilote peut utiliser plus d'énergie électrique pour tenter de dépasser.</p>
+                </article>
+                <article class="rule">
+                    <h3>Mode Boost</h3>
+                    <p>Le pilote peut aussi déclencher un surplus de puissance quand il le veut, pour attaquer ou se défendre, peu importe sa position.</p>
+                </article>
+                <article class="rule">
+                    <h3>Moteurs simplifiés</h3>
+                    <p>Le MGU-H, qui récupérait l'énergie du turbo, disparaît. L'énergie est récupérée surtout au freinage, ce qui rend la gestion de la batterie essentielle.</p>
+                </article>
+            </div>
+
+            <div class="table-wrap">
+                <table class="table">
+                    <caption>Ce qui change entre 2025 et 2026</caption>
+                    <thead>
+                    <tr><th></th><th>2025</th><th>2026</th></tr>
+                    </thead>
+                    <tbody>
+                    <tr><td>Poids minimum</td><td>800 kg</td><td>≈ 770 kg</td></tr>
+                    <tr><td>Empattement maximum</td><td>3,60 m</td><td>3,40 m</td></tr>
+                    <tr><td>Largeur</td><td>2,00 m</td><td>1,90 m</td></tr>
+                    <tr><td>Aide au dépassement</td><td>DRS</td><td>Overtake Mode</td></tr>
+                    <tr><td>Ailerons mobiles</td><td>Arrière seulement</td><td>Avant et arrière</td></tr>
+                    <tr><td>Puissance électrique</td><td>120 kW</td><td>350 kW</td></tr>
+                    <tr><td>MGU-H</td><td>Oui</td><td>Supprimé</td></tr>
+                    <tr><td>Carburant</td><td>Partiellement durable</td><td>100 % durable</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         LES POINTS
+         ===================================================== -->
+    <section class="section" id="points">
+        <div class="container duo">
+            <div>
+                <h2 class="section-title">Les points</h2>
+                <p class="lead">
+                    Les 10 premiers de chaque Grand Prix marquent des points. Le pilote qui en a le plus
+                    à la fin de la saison est champion du monde. Les points des deux pilotes d'une écurie
+                    s'additionnent pour le championnat constructeurs.
+                </p>
+                <ul class="notes">
+                    <li>Plus de point bonus pour le meilleur tour en course depuis 2025.</li>
+                    <li>En sprint, les 8 premiers marquent : de 8 points pour le vainqueur à 1 point pour le 8<sup>e</sup>.</li>
+                </ul>
+            </div>
+
+            <ol class="points">
+                <li style="--p: 25"><span>1<sup>er</sup></span><i></i><b>25</b></li>
+                <li style="--p: 18"><span>2<sup>e</sup></span><i></i><b>18</b></li>
+                <li style="--p: 15"><span>3<sup>e</sup></span><i></i><b>15</b></li>
+                <li style="--p: 12"><span>4<sup>e</sup></span><i></i><b>12</b></li>
+                <li style="--p: 10"><span>5<sup>e</sup></span><i></i><b>10</b></li>
+                <li style="--p: 8"><span>6<sup>e</sup></span><i></i><b>8</b></li>
+                <li style="--p: 6"><span>7<sup>e</sup></span><i></i><b>6</b></li>
+                <li style="--p: 4"><span>8<sup>e</sup></span><i></i><b>4</b></li>
+                <li style="--p: 2"><span>9<sup>e</sup></span><i></i><b>2</b></li>
+                <li style="--p: 1"><span>10<sup>e</sup></span><i></i><b>1</b></li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         LE WEEK-END
+         ===================================================== -->
+    <section class="section" id="weekend">
+        <div class="container">
+            <h2 class="section-title">Le déroulé d'un week-end</h2>
+
+            <div class="weekends">
+                <div class="weekend">
+                    <p class="eyebrow">Week-end classique</p>
+                    <ol class="steps">
+                        <li><b>Vendredi</b><span>Essais libres 1 et 2</span></li>
+                        <li><b>Samedi</b><span>Essais libres 3, puis qualifications</span></li>
+                        <li><b>Dimanche</b><span>Grand Prix</span></li>
+                    </ol>
+                </div>
+                <div class="weekend weekend--sprint">
+                    <p class="eyebrow">Week-end sprint</p>
+                    <ol class="steps">
+                        <li><b>Vendredi</b><span>Essais libres 1, puis qualifications sprint</span></li>
+                        <li><b>Samedi</b><span>Course sprint (environ 100 km), puis qualifications</span></li>
+                        <li><b>Dimanche</b><span>Grand Prix</span></li>
+                    </ol>
+                    <p class="weekend__note">6 week-ends sprint en 2026 : Chine, Miami, Canada, Grande-Bretagne, Pays-Bas et Singapour.</p>
+                </div>
+            </div>
+
+            <div class="rules">
+                <article class="rule">
+                    <h3>Qualifications</h3>
+                    <p>Trois manches : Q1, Q2 et Q3. Les plus lents sont éliminés à chaque manche, et les 10 meilleurs se disputent la pole position en Q3.</p>
+                </article>
+                <article class="rule">
+                    <h3>La course</h3>
+                    <p>Au moins 305 km (sauf à Monaco), avec une limite de 2 heures. Au moins un arrêt au stand est obligatoire sur piste sèche, pour changer de pneus.</p>
+                </article>
+                <article class="rule">
+                    <h3>Parc fermé</h3>
+                    <p>Après les qualifications, les équipes ne peuvent presque plus toucher aux réglages de la voiture jusqu'à la course.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         PNEUS
+         ===================================================== -->
+    <section class="section" id="pneus">
+        <div class="container">
+            <h2 class="section-title">Les pneus</h2>
+            <p class="lead">
+                Pirelli apporte trois gommes sèches à chaque Grand Prix. Sur piste sèche, chaque pilote doit en utiliser
+                au moins deux différentes pendant la course.
+            </p>
+            <div class="tyres">
+                <div class="tyre" style="--tyre: #e10600"><i></i><b>Tendre</b><span>La plus rapide, mais s'use vite</span></div>
+                <div class="tyre" style="--tyre: #ffd400"><i></i><b>Médium</b><span>Le compromis</span></div>
+                <div class="tyre" style="--tyre: #f3f2ef"><i></i><b>Dur</b><span>Plus lente, mais dure longtemps</span></div>
+                <div class="tyre" style="--tyre: #2fb24c"><i></i><b>Intermédiaire</b><span>Piste humide</span></div>
+                <div class="tyre" style="--tyre: #1e6fd9"><i></i><b>Pluie</b><span>Forte pluie</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         DRAPEAUX
+         ===================================================== -->
+    <section class="section" id="drapeaux">
+        <div class="container">
+            <h2 class="section-title">Les drapeaux</h2>
+            <div class="flags">
+                <div class="flag"><i class="flag__swatch flag--green"></i><div><b>Vert</b><span>La piste est dégagée, on peut attaquer.</span></div></div>
+                <div class="flag"><i class="flag__swatch flag--yellow"></i><div><b>Jaune</b><span>Danger : on ralentit et on ne dépasse pas.</span></div></div>
+                <div class="flag"><i class="flag__swatch flag--red"></i><div><b>Rouge</b><span>Séance arrêtée, tout le monde rentre au stand.</span></div></div>
+                <div class="flag"><i class="flag__swatch flag--blue"></i><div><b>Bleu</b><span>Une voiture plus rapide arrive : il faut la laisser passer.</span></div></div>
+                <div class="flag"><i class="flag__swatch flag--white"></i><div><b>Blanc</b><span>Un véhicule lent est sur la piste.</span></div></div>
+                <div class="flag"><i class="flag__swatch flag--slippery"></i><div><b>Jaune et rouge</b><span>Piste glissante (huile, eau, débris).</span></div></div>
+                <div class="flag"><i class="flag__swatch flag--warning"></i><div><b>Noir et blanc</b><span>Avertissement pour comportement antisportif.</span></div></div>
+                <div class="flag"><i class="flag__swatch flag--meatball"></i><div><b>Noir à rond orange</b><span>Problème mécanique : le pilote doit rentrer au stand.</span></div></div>
+                <div class="flag"><i class="flag__swatch flag--black"></i><div><b>Noir</b><span>Disqualification.</span></div></div>
+                <div class="flag"><i class="flag__swatch flag--chequered"></i><div><b>Damier</b><span>Fin de la séance ou de la course.</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         PÉNALITÉS
+         ===================================================== -->
+    <section class="section" id="penalites">
+        <div class="container">
+            <h2 class="section-title">Les pénalités</h2>
+            <ul class="penalties">
+                <li><b>5 ou 10 secondes</b><span>Ajoutées au temps du pilote, ou à purger lors de son prochain arrêt.</span></li>
+                <li><b>Drive-through</b><span>Le pilote doit traverser la voie des stands sans s'arrêter.</span></li>
+                <li><b>Stop &amp; Go</b><span>Le pilote s'arrête 10 secondes à son stand, sans que l'équipe touche à la voiture.</span></li>
+                <li><b>Pénalité de grille</b><span>Le pilote recule de plusieurs places sur la grille de départ de la course suivante.</span></li>
+                <li><b>Points de pénalité</b><span>12 points sur sa licence en 12 mois, et le pilote est suspendu pour une course.</span></li>
+                <li><b>Disqualification</b><span>Pour les fautes les plus graves, ou une voiture non conforme au règlement.</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         HISTOIRE DES RÈGLEMENTS
+         ===================================================== -->
+    <section class="section" id="histoire">
+        <div class="container">
+            <h2 class="section-title">Chaque génération de F1</h2>
+            <ol class="timeline">
+                <li><b>1950</b><div><h3>Naissance du championnat</h3><p>Premier championnat du monde des pilotes. Les moteurs sont à l'avant des voitures.</p></div></li>
+                <li><b>1958</b><div><h3>Championnat constructeurs</h3><p>Les écuries ont désormais leur propre titre.</p></div></li>
+                <li><b>Années 60</b><div><h3>Moteur à l'arrière</h3><p>Le moteur passe derrière le pilote : les voitures deviennent plus légères et plus agiles.</p></div></li>
+                <li><b>1968</b><div><h3>Ailerons et sponsors</h3><p>Apparition des premiers ailerons et des voitures aux couleurs de leurs sponsors.</p></div></li>
+                <li><b>1977</b><div><h3>Turbo et effet de sol</h3><p>Renault arrive avec le premier moteur turbo, Lotus invente l'effet de sol qui « aspire » la voiture au sol.</p></div></li>
+                <li><b>1983</b><div><h3>Fond plat obligatoire</h3><p>L'effet de sol est interdit pour des raisons de sécurité.</p></div></li>
+                <li><b>1989</b><div><h3>Fin des turbos</h3><p>Retour aux moteurs atmosphériques V8, V10 et V12.</p></div></li>
+                <li><b>2006</b><div><h3>L'ère des V8</h3><p>Moteurs V8 2,4 L, plus petits que les V10 qu'ils remplacent.</p></div></li>
+                <li><b>2009</b><div><h3>KERS et pneus slicks</h3><p>Premier système de récupération d'énergie, retour des pneus lisses et aérodynamique simplifiée.</p></div></li>
+                <li><b>2011</b><div><h3>DRS et Pirelli</h3><p>L'aileron arrière mobile aide aux dépassements, Pirelli devient le seul fournisseur de pneus.</p></div></li>
+                <li><b>2014</b><div><h3>Moteurs hybrides</h3><p>V6 1,6 L turbo associé à des moteurs électriques.</p></div></li>
+                <li><b>2017</b><div><h3>Voitures plus larges</h3><p>Pneus et voitures plus larges : les F1 deviennent beaucoup plus rapides.</p></div></li>
+                <li><b>2018</b><div><h3>Le Halo</h3><p>L'arceau de protection au-dessus du cockpit devient obligatoire.</p></div></li>
+                <li><b>2021</b><div><h3>Plafond budgétaire</h3><p>Les dépenses des équipes sont limitées pour rendre le championnat plus équitable.</p></div></li>
+                <li><b>2022</b><div><h3>Retour de l'effet de sol</h3><p>Nouvelles voitures pensées pour se suivre de plus près, avec des jantes de 18 pouces.</p></div></li>
+                <li class="is-now"><b>2026</b><div><h3>Nouvelle ère</h3><p>Moteurs 50/50, carburant 100 % durable et aérodynamique active.</p></div></li>
+            </ol>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>Overtake est un site de fans indépendant, sans lien avec Formula One Group ni la FIA.</p>
+    </div>
+</footer>
+
+<script src="js/index.js"></script>
 </body>
 </html>
