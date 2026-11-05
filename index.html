@@ -16,24 +16,17 @@
      ===================================================== -->
 <header class="nav">
     <div class="container nav__inner">
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
             <span class="logo__mark"></span>
             OVERTAKE
         </a>
         <nav class="nav__links" id="navLinks">
-            <a href="#" class="nav__link is-active">Accueil</a>
-            <div class="nav__item">
-                <button class="nav__link">Championnats ▾</button>
-                <div class="dropdown">
-                    <a href="#">Classement pilotes</a>
-                    <a href="#">Classement constructeurs</a>
-                    <a href="#">Calendrier 2026</a>
-                </div>
-            </div>
+            <a href="index.html" class="nav__link is-active">Accueil</a>
+            <a href="gp.html" class="nav__link">Grands Prix</a>
             <a href="pilote.html" class="nav__link">Pilotes</a>
-            <a href="#" class="nav__link">Équipes</a>
+            <a href="equipe.html" class="nav__link">Équipes</a>
             <a href="reglement.html" class="nav__link">Règlement</a>
-            <a href="#boutique" class="nav__link">Boutique</a>
+            <a href="https://f1store2.formula1.com/fr/" class="nav__link" target="_blank" rel="noopener noreferrer">Boutique</a>
         </nav>
 
         <div class="nav__tools">
@@ -53,6 +46,14 @@
          HERO
          ===================================================== -->
     <section class="hero">
+        <!-- Images de fond du diaporama : ajoute ou enlève des <img> ici.
+             La première doit avoir la classe "is-active". -->
+        <div class="hero__slides" aria-hidden="true">
+            <img src="images/hero/gaslyP1.jpg" alt="" class="hero__slide is-active">
+            <img src="images/hero/schumacherP1.jpg" alt="" class="hero__slide">
+            <img src="images/hero/verstappenTrophé.jpg" alt="" class="hero__slide">
+        </div>
+
         <div class="container">
             <p class="eyebrow">Formule 1 · Saison 2026</p>
             <h1 class="hero__title">
@@ -63,9 +64,12 @@
                 Résultats, classements, pilotes, écuries et règlement, avec des données claires et à jour.
             </p>
             <div class="hero__buttons">
-                <a href="#programme" class="btn btn--primary">Découvrir la saison →</a>
+                <a href="gp.html" class="btn btn--primary">Découvrir la saison →</a>
                 <a href="#classements" class="btn btn--ghost">Voir les classements →</a>
             </div>
+
+            <!-- Les petits points sont créés par index.js -->
+            <div class="hero__dots" id="heroDots"></div>
         </div>
     </section>
 
@@ -75,27 +79,31 @@
     <section class="section">
         <div class="container">
             <div class="cards">
-                <a href="#" class="card">
-                    <h3>Championnats</h3>
-                    <p>Classements, résultats et statistiques détaillées.</p>
+                <a href="gp.html" class="card">
+                    <img src="images/podium.jpg" alt="Podium d'un Grand Prix de F1">
+                    <h3>Grands Prix</h3>
+                    <p>Calendrier, résultats de chaque course et palmarès.</p>
                 </a>
-                <a href="#" class="card">
-                    <h3>Pilote</h3>
-                    <p>Chaque pilote (recent ou ancien) avec leur carriere</p>
+                <a href="pilote.html" class="card">
+                    <img src="images/max.jpg" alt="Max Verstappen qui célèbre une victoire">
+                    <h3>Pilotes</h3>
+                    <p>Chaque pilote, récent ou ancien, avec sa carrière.</p>
                 </a>
-                <a href="#" class="card">
-                    <h3>Equipe</h3>
-                    <p>Equipe ayant participé en F1 avec leur statistique.</p>
+                <a href="equipe.html" class="card">
+                    <img src="images/mercVsFefe.jpg" alt="Une Ferrari et une Mercedes en piste">
+                    <h3>Équipes</h3>
+                    <p>Les écuries ayant participé à la F1, avec leurs statistiques.</p>
                 </a>
-                <a href="#" class="card">
-                    <h3>Reglement</h3>
-                    <p>Reglement de chacun generation de F1.</p>
+                <a href="reglement.html" class="card">
+                    <img src="images/fia.jpg" alt="Logo de la FIA">
+                    <h3>Règlement</h3>
+                    <p>Le règlement de chaque génération de F1.</p>
                 </a>
             </div>
         </div>
     </section>
 
-    
+
     <!-- =====================================================
          CLASSEMENTS + PROCHAIN GP
          ===================================================== -->
@@ -136,54 +144,48 @@
         <div class="container">
             <h2 class="section-title">Produits officiels</h2>
             <div class="products">
-                <a href="https://f1store.formula1.com/en/red-bull-racing/oracle-red-bull-racing-new-era-max-verstappen-9seventy-cap-blue-kids/t-10084261+p-020069590090661+z-9-3519022030?_ref=p-TLP:m-GRID:i-r9c0:po-27" target="_blank" rel="noopener noreferrer">
-                <article class="product">
-                    <div class="product__img"><img src="images/casquetteRedBull.png" alt="image de la casquette red bull" ></div>
-                    <h3>Casquette Red Bull Racing</h3>
-                    <p class="product__price">50 €</p>
-                </article>
-                </a>
-
-                <a href="https://f1store.formula1.com/en/scuderia-ferrari/scuderia-ferrari-hp-f1-charles-leclerc-lego-helmet/t-32753192+p-573348718358382+z-9-340554760?_ref=p-TLP:m-GRID:i-r22c0:po-66" target="_blank" rel="noopener noreferrer">
+                <a href="https://f1store.formula1.com/en/red-bull-racing/oracle-red-bull-racing-new-era-max-verstappen-9seventy-cap-blue-kids/t-10084261+p-020069590090661+z-9-3519022030" target="_blank" rel="noopener noreferrer">
                     <article class="product">
-                        <div class="product__img"><img src="images/casqueLegoCL16.png" alt="image du casque lego" ></div>
-                        <h3> Casque Lego Charles Leclerc</h3>
+                        <div class="product__img"><img src="images/casquetteRedBull.png" alt="Casquette Red Bull Racing"></div>
+                        <h3>Casquette Red Bull Racing</h3>
+                        <p class="product__price">50 €</p>
+                    </article>
+                </a>
+                <a href="https://f1store.formula1.com/en/scuderia-ferrari/scuderia-ferrari-hp-f1-charles-leclerc-lego-helmet/t-32753192+p-573348718358382+z-9-340554760" target="_blank" rel="noopener noreferrer">
+                    <article class="product">
+                        <div class="product__img"><img src="images/casqueLegoCL16.png" alt="Casque Lego de Charles Leclerc"></div>
+                        <h3>Casque Lego Charles Leclerc</h3>
                         <p class="product__price">108 €</p>
                     </article>
                 </a>
-
-                <a href="https://f1store.formula1.com/en/mercedes-amg-petronas-f1-team/mercedes-kimi-antonelli-2026-season-spark-1:5-helmet/t-43085346+p-248882003265492+z-9-4157779704?_ref=p-ALP:m-GRID:i-r0c2:po-2" target="_blank" rel="noopener noreferrer">
+                <a href="https://f1store.formula1.com/en/mercedes-amg-petronas-f1-team/mercedes-kimi-antonelli-2026-season-spark-1:5-helmet/t-43085346+p-248882003265492+z-9-4157779704" target="_blank" rel="noopener noreferrer">
                     <article class="product">
-                        <div class="product__img"><img src="images/casqueKimiA.png" alt="image du casque de Kimi" ></div>
-                        <h3> Casque de Kimi Antonelli 1/5</h3>
+                        <div class="product__img"><img src="images/casqueKimiA.png" alt="Casque de Kimi Antonelli à l'échelle 1/5"></div>
+                        <h3>Casque de Kimi Antonelli 1/5</h3>
                         <p class="product__price">57 €</p>
                     </article>
                 </a>
-
-                <a href="https://f1store.formula1.com/en/cadillac-f1-team/cadillac-perez-no11-australian-gp-2026-1:18-model/t-3894460099+p-79885972933649+z-9-3393222817?_ref=p-TLP:m-GRID:i-r12c0:po-36" target="_blank" rel="noopener noreferrer">
+                <a href="https://f1store.formula1.com/en/cadillac-f1-team/cadillac-perez-no11-australian-gp-2026-1:18-model/t-3894460099+p-79885972933649+z-9-3393222817" target="_blank" rel="noopener noreferrer">
                     <article class="product">
-                        <div class="product__img"><img src="images/f1Cadillac.png" alt="image de la f1 cadillac" ></div>
-                        <h3>F1 Cadillac echelle 1/18</h3>
+                        <div class="product__img"><img src="images/f1Cadillac.png" alt="Miniature de la F1 Cadillac"></div>
+                        <h3>F1 Cadillac échelle 1/18</h3>
                         <p class="product__price">240 €</p>
                     </article>
                 </a>
-
-                <a href="https://f1store.formula1.com/en/cadillac-f1-team/cadillac-perez-no11-australian-gp-2026-1:18-model/t-3894460099+p-79885972933649+z-9-3393222817?_ref=p-TLP:m-GRID:i-r12c0:po-36" target="_blank" rel="noopener noreferrer">
+                <a href="https://f1store2.formula1.com/fr/alpine/casquette-unisexe-alpine-f1-team-new-era-9fifty-imprim%C3%A9-int%C3%A9gral/t-32982979+p-241169032668516+z-9-3485077271?_ref=p-TLP:m-GRID:i-r4c1:po-13" target="_blank" rel="noopener noreferrer">
                     <article class="product">
-                        <div class="product__img"><img src="images/casquetteAlpine.png" alt="image de la casquette Alpine" ></div>
-                        <h3>Casquette unisex Alpine</h3>
-                        <p class="product__price">44 €</p>
+                        <div class="product__img"><img src="images/casquetteAlpine.png" alt="Casquette Alpine"></div>
+                        <h3>Casquette unisexe Alpine</h3>
+                        <p class="product__price">47 €</p>
                     </article>
                 </a>
-
-                <a href="https://f1store.formula1.com/en/williams-racing/williams-racing-new-era-replica-tech-t-shirt-navy-kids/t-32192075+p-246603511424535+z-9-2210806569?_ref=p-TLP:m-GRID:i-r7c2:po-23" target="_blank" rel="noopener noreferrer">
+                <a href="https://f1store.formula1.com/en/williams-racing/williams-racing-new-era-replica-tech-t-shirt-navy-kids/t-32192075+p-246603511424535+z-9-2210806569" target="_blank" rel="noopener noreferrer">
                     <article class="product">
-                        <div class="product__img"><img src="images/tshirtWilliams.png" alt="image d'un tshirt Williams" ></div>
-                        <h3>Tshirt unisex Williams</h3>
+                        <div class="product__img"><img src="images/tshirtWilliams.png" alt="T-shirt Williams Racing"></div>
+                        <h3>T-shirt unisexe Williams</h3>
                         <p class="product__price">69 €</p>
                     </article>
                 </a>
-
             </div>
         </div>
     </section>

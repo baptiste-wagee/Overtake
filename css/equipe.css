@@ -1,0 +1,305 @@
+/* =========================================================
+   PAGE ÉQUIPES
+   Ce fichier vient APRÈS index.css : il réutilise ses
+   variables (--accent, --surface…), la navbar et le footer.
+
+   Sommaire :
+   1. En-tête de page
+   2. Barre de filtres
+   3. Grille des écuries
+   4. Responsive
+   ========================================================= */
+
+/* =========================================================
+   1. EN-TÊTE DE PAGE
+   ========================================================= */
+.page-hero {
+    padding: 72px 0 40px;
+    background: linear-gradient(135deg, #1d1315, var(--bg) 60%);
+    border-bottom: 1px solid var(--line);
+}
+
+[data-theme="light"] .page-hero {
+    background: linear-gradient(135deg, #fbe9e8, var(--bg) 60%);
+}
+
+.page-hero__title {
+    font-family: var(--font-title);
+    font-stretch: 118%;
+    font-weight: 850;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1;
+    margin: 14px 0 16px;
+}
+
+.page-hero__title em {
+    color: var(--accent);
+}
+
+.page-hero__text {
+    max-width: 52ch;
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+
+.section--tight {
+    padding-top: 32px;
+}
+
+/* =========================================================
+   2. BARRE DE FILTRES
+   ========================================================= */
+.toolbar {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.field {
+    display: grid;
+    gap: 6px;
+}
+
+.field--grow {
+    flex: 1;
+    min-width: 220px;
+}
+
+.field__label {
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.field__input {
+    height: 46px;
+    padding: 0 16px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+}
+
+.field__input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+.toolbar__count {
+    margin-left: auto;
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* =========================================================
+   3. GRILLE DES ÉCURIES
+   ========================================================= */
+.teams {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+}
+
+.team {
+    --team: var(--accent);       /* remplacée par la couleur de l'écurie (equipe.js) */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+    padding: 24px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    transition: transform 0.15s, border-color 0.15s;
+}
+
+/* Bande de couleur de l'écurie sur le côté gauche */
+.team::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 5px;
+    background: var(--team);
+}
+
+.team:hover {
+    transform: translateY(-3px);
+    border-color: var(--team);
+}
+
+/* Grosse position en fond de carte */
+.team__bigpos {
+    position: absolute;
+    right: 18px;
+    top: 4px;
+    font-family: var(--font-title);
+    font-stretch: 125%;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 6.5rem;
+    line-height: 1;
+    color: var(--team);
+    opacity: 0.16;
+    pointer-events: none;
+}
+
+.team__top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.team__pos {
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--team);
+    color: #0b0b0e;
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.team__country {
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.team__name {
+    font-family: var(--font-title);
+    font-stretch: 112%;
+    font-weight: 850;
+    font-size: 1.8rem;
+    line-height: 1.05;
+    text-transform: uppercase;
+    max-width: 85%;
+}
+
+.team__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.team__stats div {
+    padding: 10px 8px;
+    border-radius: 8px;
+    background: var(--surface-2);
+    text-align: center;
+}
+
+.team__stats dt {
+    font-size: 0.72rem;
+    color: var(--muted);
+}
+
+.team__stats dd {
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 1.2rem;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Barre : points de l'écurie comparés au leader */
+.team__bar {
+    height: 6px;
+    margin-top: 14px;
+    border-radius: 3px;
+    background: var(--surface-2);
+    overflow: hidden;
+}
+
+.team__bar i {
+    display: block;
+    height: 100%;
+    border-radius: 3px;
+    background: var(--team);
+}
+
+/* Liste des pilotes de l'écurie */
+.team__drivers {
+    list-style: none;
+    display: grid;
+    gap: 6px;
+    margin-top: 18px;
+}
+
+.team__drivers li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    font-size: 0.95rem;
+}
+
+.team__drivers li span:last-child {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.team__drivers b {
+    text-transform: uppercase;
+}
+
+.team__link {
+    margin-top: auto;            /* pousse le lien en bas de la carte */
+    padding-top: 18px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.team__link:hover {
+    color: var(--text);
+}
+
+/* Carte "fantôme" pendant le chargement */
+.team--loading {
+    background: linear-gradient(90deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite linear;
+}
+
+.team--loading::before {
+    display: none;
+}
+
+@keyframes shimmer {
+    from { background-position: 100% 0; }
+    to { background-position: -100% 0; }
+}
+
+.empty {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--muted);
+}
+
+/* =========================================================
+   4. RESPONSIVE
+   ========================================================= */
+@media (max-width: 560px) {
+    .page-hero { padding: 48px 0 28px; }
+    .toolbar__count { margin-left: 0; }
+    .field { width: 100%; }
+    .teams { grid-template-columns: 1fr; }
+    .team__name { font-size: 1.5rem; }
+}

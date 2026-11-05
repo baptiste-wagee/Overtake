@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grands Prix – Overtake</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
+
+    <!-- index.css = base commune (couleurs, navbar, footer…) / gp.css = styles de cette page -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/gp.css">
+</head>
+<body>
+<!-- =====================================================
+     NAVBAR (identique à l'accueil)
+     ===================================================== -->
+<header class="nav">
+    <div class="container nav__inner">
+        <a href="index.html" class="logo">
+            <span class="logo__mark"></span>
+            OVERTAKE
+        </a>
+        <nav class="nav__links" id="navLinks">
+            <a href="index.html" class="nav__link is-active">Accueil</a>
+            <a href="gp.html" class="nav__link">Grands Prix</a>
+            <a href="pilote.html" class="nav__link">Pilotes</a>
+            <a href="equipe.html" class="nav__link">Équipes</a>
+            <a href="reglement.html" class="nav__link">Règlement</a>
+            <a href="https://f1store2.formula1.com/fr/" class="nav__link" target="_blank" rel="noopener noreferrer">Boutique</a>
+        </nav>
+
+        <div class="nav__tools">
+            <label>
+                <input type="search" class="search" placeholder="Rechercher un pilote, une équipe…">
+            </label>
+            <button class="icon-btn" id="themeBtn" aria-label="Changer de thème">◐</button>
+            <button class="icon-btn burger" id="burgerBtn" aria-label="Menu">☰</button>
+        </div>
+
+    </div>
+</header>
+
+<main>
+    <!-- =====================================================
+         EN-TÊTE DE PAGE
+         ===================================================== -->
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">Formule 1 · Grands Prix</p>
+            <h1 class="page-hero__title">Les <em>Grands Prix</em></h1>
+            <p class="page-hero__text">
+                Le calendrier de chaque saison avec le vainqueur de chaque course,
+                et le palmarès de tous les champions depuis 1950.
+            </p>
+        </div>
+    </section>
+
+    <section class="section section--tight">
+        <div class="container">
+            <!-- Onglets : Calendrier / Palmarès -->
+            <div class="tabs" role="tablist">
+                <button class="tab is-active" role="tab" aria-selected="true" data-tab="calendrier">Calendrier</button>
+                <button class="tab" role="tab" aria-selected="false" data-tab="palmares">Palmarès</button>
+            </div>
+
+            <!-- =====================================================
+                 ONGLET 1 : CALENDRIER
+                 ===================================================== -->
+            <div class="panel" id="panel-calendrier">
+                <div class="toolbar">
+                    <label class="field">
+                        <span class="field__label">Saison</span>
+                        <!-- Les années sont ajoutées automatiquement par gp.js -->
+                        <select id="seasonSelect" class="field__input"></select>
+                    </label>
+                    <p class="toolbar__count" id="raceCount"></p>
+                </div>
+
+                <!-- Les cartes des Grands Prix sont créées par gp.js grâce à l'API -->
+                <div class="races" id="races">
+                    <div class="race race--loading"></div>
+                    <div class="race race--loading"></div>
+                    <div class="race race--loading"></div>
+                </div>
+                <p class="empty" id="racesEmpty" hidden></p>
+            </div>
+
+            <!-- =====================================================
+                 ONGLET 2 : PALMARÈS (chargé seulement quand on l'ouvre)
+                 ===================================================== -->
+            <div class="panel" id="panel-palmares" hidden>
+                <h2 class="section-title">Les recordmen</h2>
+                <div class="records" id="records"></div>
+
+                <h2 class="section-title">Tous les champions</h2>
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                        <tr><th>Saison</th><th>Champion pilotes</th><th>Champion constructeurs</th></tr>
+                        </thead>
+                        <tbody id="champions">
+                        <tr><td colspan="3">Chargement…</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         FENÊTRE : RÉSULTAT COMPLET D'UN GRAND PRIX
+         ===================================================== -->
+    <dialog class="result" id="resultDialog">
+        <div class="result__head">
+            <div>
+                <p class="eyebrow" id="resultRound"></p>
+                <h2 class="result__title" id="resultTitle"></h2>
+            </div>
+            <button class="icon-btn" id="resultClose" aria-label="Fermer">✕</button>
+        </div>
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                <tr><th>Pos.</th><th>Pilote</th><th>Écurie</th><th>Temps / statut</th><th>Pts</th></tr>
+                </thead>
+                <tbody id="resultBody"></tbody>
+            </table>
+        </div>
+    </dialog>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>Overtake est un site de fans indépendant, sans lien avec Formula One Group ni la FIA.</p>
+    </div>
+</footer>
+
+<script src="js/index.js"></script>
+<script src="js/gp.js"></script>
+</body>
+</html>
