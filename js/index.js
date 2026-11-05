@@ -96,8 +96,11 @@ async function loadNextRace() {
     }
 }
 
-loadStandings();
-loadNextRace();
+// On ne charge le classement et le prochain GP que sur la page qui les affiche (l'accueil)
+if (document.getElementById("standings")) {
+    loadStandings();
+    loadNextRace();
+}
 
 // =========================================================
 // 4. COMPTE À REBOURS
@@ -129,3 +132,43 @@ function updateCountdown() {
 
 updateCountdown();                   // une première fois tout de suite
 setInterval(updateCountdown, 1000);  // puis toutes les secondes
+
+// =========================================================
+// DIAPORAMA DU HERO
+// Change d'image toutes les 5 secondes.
+// Pour ajouter une image : ajoute un <img class="hero__slide"> dans index.html.
+// =========================================================
+const heroSlides = document.querySelectorAll(".hero__slide");
+const heroDots = document.getElementById("heroDots");
+
+if (heroSlides.length > 1 && heroDots) {
+    let current = 0;
+    let timer;
+
+    // Un point par image
+    heroSlides.forEach((slide, index) => {
+        const dot = document.createElement("button");
+        dot.className = "hero__dot" + (index === 0 ? " is-active" : "");
+        dot.setAttribute("aria-label", `Image ${index + 1}`);
+        dot.addEventListener("click", () => {
+            showSlide(index);
+            restart();
+        });
+        heroDots.appendChild(dot);
+    });
+
+    function showSlide(index) {
+        heroSlides[current].classList.remove("is-active");
+        heroDots.children[current].classList.remove("is-active");
+        current = index;
+        heroSlides[current].classList.add("is-active");
+        heroDots.children[current].classList.add("is-active");
+    }
+
+    function restart() {
+        clearInterval(timer);
+        timer = setInterval(() => showSlide((current + 1) % heroSlides.length), 5000);
+    }
+
+    restart();
+}
