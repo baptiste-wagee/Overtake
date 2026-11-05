@@ -1,7 +1,10 @@
-/* =========================================================
-   1. VARIABLES (couleurs, polices…)
-   Change une valeur ici, elle change partout sur le site.
-   ========================================================= */
+/*
+Nom du fichier : index.css
+Auteur : Baptiste Wagée
+Date de création : 03 Novembre 2026
+Version : 1.3
+*/
+
 :root {
     --bg: #0b0b0e;          /* fond de la page */
     --surface: #141419;     /* fond des cartes */
