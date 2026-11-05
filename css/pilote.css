@@ -1,0 +1,269 @@
+/*
+Nom du fichier : pilote.css
+Auteur : Baptiste Wagée
+Date de création : 05 Novembre 2026
+Version : 1.2
+*/
+
+/* =========================================================
+   1. EN-TÊTE DE PAGE
+   ========================================================= */
+.page-hero {
+    padding: 72px 0 40px;
+    background: linear-gradient(135deg, #1d1315, var(--bg) 60%);
+    border-bottom: 1px solid var(--line);
+}
+
+[data-theme="light"] .page-hero {
+    background: linear-gradient(135deg, #fbe9e8, var(--bg) 60%);
+}
+
+.page-hero__title {
+    font-family: var(--font-title);
+    font-stretch: 118%;
+    font-weight: 850;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1;
+    margin: 14px 0 16px;
+}
+
+.page-hero__title em {
+    color: var(--accent);
+}
+
+.page-hero__text {
+    max-width: 52ch;
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+
+.section--tight {
+    padding-top: 32px;
+}
+
+/* =========================================================
+   2. BARRE DE FILTRES
+   ========================================================= */
+.toolbar {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.field {
+    display: grid;
+    gap: 6px;
+}
+
+.field--grow {
+    flex: 1;
+    min-width: 220px;
+}
+
+.field__label {
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.field__input {
+    height: 46px;
+    padding: 0 16px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+}
+
+.field__input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+.toolbar__count {
+    margin-left: auto;
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* =========================================================
+   3. GRILLE DES PILOTES
+   ========================================================= */
+.drivers {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.driver {
+    --team: var(--accent);       /* remplacée par la couleur de l'écurie (pilote.js) */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    padding: 22px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    transition: transform 0.15s, border-color 0.15s;
+}
+
+/* Bande de couleur de l'écurie en haut de la carte */
+.driver::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--team);
+}
+
+.driver:hover {
+    transform: translateY(-3px);
+    border-color: var(--team);
+}
+
+/* Gros numéro en fond de carte */
+.driver__number {
+    position: absolute;
+    right: 14px;
+    top: 8px;
+    font-family: var(--font-title);
+    font-stretch: 125%;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 5.5rem;
+    line-height: 1;
+    color: var(--team);
+    opacity: 0.18;
+    pointer-events: none;
+}
+
+.driver__top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.driver__pos {
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--team);
+    color: #0b0b0e;
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.driver__code {
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+}
+
+.driver__name {
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 1.6rem;
+    line-height: 1.05;
+    text-transform: uppercase;
+}
+
+.driver__name small {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1rem;
+    text-transform: none;
+    color: var(--muted);
+}
+
+.driver__team {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.driver__nat {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.driver__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: auto;            /* pousse les stats en bas de la carte */
+    padding-top: 20px;
+}
+
+.driver__stats div {
+    padding: 10px 8px;
+    border-radius: 8px;
+    background: var(--surface-2);
+    text-align: center;
+}
+
+.driver__stats dt {
+    font-size: 0.72rem;
+    color: var(--muted);
+}
+
+.driver__stats dd {
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 1.15rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.driver__link {
+    margin-top: 14px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.driver__link:hover {
+    color: var(--text);
+}
+
+/* Carte "fantôme" pendant le chargement */
+.driver--loading {
+    background: linear-gradient(90deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite linear;
+}
+
+.driver--loading::before {
+    display: none;
+}
+
+@keyframes shimmer {
+    from { background-position: 100% 0; }
+    to { background-position: -100% 0; }
+}
+
+.empty {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--muted);
+}
+
+/* =========================================================
+   4. RESPONSIVE
+   ========================================================= */
+@media (max-width: 560px) {
+    .page-hero { padding: 48px 0 28px; }
+    .toolbar__count { margin-left: 0; }
+    .field { width: 100%; }
+}
