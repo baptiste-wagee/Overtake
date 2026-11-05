@@ -1,0 +1,500 @@
+/* =========================================================
+   PAGE GRANDS PRIX
+   Ce fichier vient APRÈS index.css : il réutilise ses
+   variables (--accent, --surface…), la navbar et le footer.
+
+   Sommaire :
+   1. En-tête de page
+   2. Barre de filtres
+   3. Onglets
+   4. Cartes des Grands Prix
+   5. Tableaux (résultat, palmarès)
+   6. Fenêtre du résultat
+   7. Palmarès : recordmen
+   8. Responsive
+   ========================================================= */
+
+/* =========================================================
+   1. EN-TÊTE DE PAGE
+   ========================================================= */
+.page-hero {
+    padding: 72px 0 40px;
+    background: linear-gradient(135deg, #1d1315, var(--bg) 60%);
+    border-bottom: 1px solid var(--line);
+}
+
+[data-theme="light"] .page-hero {
+    background: linear-gradient(135deg, #fbe9e8, var(--bg) 60%);
+}
+
+.page-hero__title {
+    font-family: var(--font-title);
+    font-stretch: 118%;
+    font-weight: 850;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1;
+    margin: 14px 0 16px;
+}
+
+.page-hero__title em {
+    color: var(--accent);
+}
+
+.page-hero__text {
+    max-width: 52ch;
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+
+.section--tight {
+    padding-top: 32px;
+}
+
+/* =========================================================
+   2. BARRE DE FILTRES
+   ========================================================= */
+.toolbar {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.field {
+    display: grid;
+    gap: 6px;
+}
+
+.field--grow {
+    flex: 1;
+    min-width: 220px;
+}
+
+.field__label {
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.field__input {
+    height: 46px;
+    padding: 0 16px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+}
+
+.field__input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+
+.toolbar__count {
+    margin-left: auto;
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* =========================================================
+   3. ONGLETS
+   ========================================================= */
+.tabs {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    margin-bottom: 28px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+}
+
+.tab {
+    padding: 10px 22px;
+    border: 0;
+    border-radius: 7px;
+    background: none;
+    color: var(--muted);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.tab:hover {
+    color: var(--text);
+}
+
+.tab.is-active {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* =========================================================
+   4. CARTES DES GRANDS PRIX
+   ========================================================= */
+.races {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.race {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 250px;
+    padding: 22px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    transition: transform 0.15s, border-color 0.15s;
+}
+
+/* Les courses terminées sont cliquables */
+button.race {
+    cursor: pointer;
+}
+
+button.race:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+/* La prochaine course est mise en avant */
+.race--next {
+    border-color: var(--accent);
+    background: linear-gradient(160deg, rgba(225, 6, 0, 0.16), var(--surface) 55%);
+}
+
+/* Les courses à venir sont un peu plus discrètes */
+.race--later {
+    opacity: 0.75;
+}
+
+.race__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.race__round {
+    font-family: var(--font-title);
+    font-stretch: 125%;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 2.2rem;
+    line-height: 1;
+    color: var(--muted);
+}
+
+.race--next .race__round {
+    color: var(--accent);
+}
+
+.race__badge {
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.race__country {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.race__flag {
+    width: 22px;
+    height: 15px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.race__name {
+    margin-top: 6px;
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 1.3rem;
+    line-height: 1.15;
+}
+
+.race__circuit {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.race__date {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.race__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: auto;            /* pousse le pied de carte en bas */
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+}
+
+.race__winner b {
+    text-transform: uppercase;
+}
+
+.race__team,
+.race__soon {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.race__next {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* Carte "fantôme" pendant le chargement */
+.race--loading {
+    background: linear-gradient(90deg, var(--surface) 0%, var(--surface-2) 50%, var(--surface) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite linear;
+}
+
+@keyframes shimmer {
+    from { background-position: 100% 0; }
+    to { background-position: -100% 0; }
+}
+
+.empty {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--muted);
+}
+
+/* =========================================================
+   5. TABLEAUX (résultat d'une course, palmarès)
+   ========================================================= */
+.table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+}
+
+.table caption {
+    padding: 16px 20px;
+    text-align: left;
+    font-family: var(--font-label);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--muted);
+    background: var(--surface);
+}
+
+.table th,
+.table td {
+    padding: 14px 20px;
+    text-align: left;
+    border-top: 1px solid var(--line);
+}
+
+.table th {
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.table td:first-child {
+    color: var(--muted);
+}
+
+.table td:last-child,
+.table th:last-child {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.table td b {
+    text-transform: uppercase;
+}
+
+.table td small {
+    display: block;
+    color: var(--muted);
+}
+
+/* Le podium d'une course */
+.table .is-podium td:first-child {
+    color: var(--accent);
+    font-weight: 800;
+}
+
+/* La saison en cours dans le palmarès */
+.live {
+    margin-left: 6px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+/* =========================================================
+   6. FENÊTRE DU RÉSULTAT
+   ========================================================= */
+.result {
+    width: min(860px, calc(100% - 32px));
+    max-height: calc(100vh - 64px);
+    margin: auto;
+    padding: 24px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Fond assombri derrière la fenêtre */
+.result::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px);
+}
+
+.result__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.result__title {
+    margin-top: 6px;
+    font-family: var(--font-title);
+    font-weight: 850;
+    font-size: 1.8rem;
+}
+
+/* =========================================================
+   7. PALMARÈS : RECORDMEN
+   ========================================================= */
+.records {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+}
+
+.record {
+    padding: 22px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+}
+
+.record h3 {
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.record ol {
+    list-style: none;
+    display: grid;
+    gap: 6px;
+    counter-reset: rank;
+}
+
+.record li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: var(--surface-2);
+    counter-increment: rank;
+}
+
+.record li::before {
+    content: counter(rank);
+    width: 18px;
+    font-weight: 800;
+    color: var(--muted);
+}
+
+.record li:first-child::before {
+    color: var(--accent);
+}
+
+.record li span {
+    flex: 1;
+    font-weight: 600;
+}
+
+.record li b {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+}
+
+/* =========================================================
+   8. RESPONSIVE
+   ========================================================= */
+@media (max-width: 700px) {
+    .records { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+    .page-hero { padding: 48px 0 28px; }
+    .toolbar__count { margin-left: 0; }
+    .field { width: 100%; }
+    .races { grid-template-columns: 1fr; }
+    .tabs { display: flex; }
+    .tab { flex: 1; }
+    .result { padding: 18px; }
+    .result__title { font-size: 1.4rem; }
+    .table th, .table td { padding: 10px 12px; }
+}

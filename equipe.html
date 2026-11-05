@@ -1,10 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Équipes – Overtake</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap">
+
+    <!-- index.css = base commune (couleurs, navbar, footer…) / equipe.css = styles de cette page -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/equipe.css">
 </head>
 <body>
+<!-- =====================================================
+     NAVBAR (identique à l'accueil)
+     ===================================================== -->
+<header class="nav">
+    <div class="container nav__inner">
+        <a href="index.html" class="logo">
+            <span class="logo__mark"></span>
+            OVERTAKE
+        </a>
+        <nav class="nav__links" id="navLinks">
+            <a href="index.html" class="nav__link is-active">Accueil</a>
+            <a href="gp.html" class="nav__link">Grands Prix</a>
+            <a href="pilote.html" class="nav__link">Pilotes</a>
+            <a href="equipe.html" class="nav__link">Équipes</a>
+            <a href="reglement.html" class="nav__link">Règlement</a>
+            <a href="https://f1store2.formula1.com/fr/" class="nav__link" target="_blank" rel="noopener noreferrer">Boutique</a>
+        </nav>
 
+        <div class="nav__tools">
+            <label>
+                <input type="search" class="search" placeholder="Rechercher un pilote, une équipe…">
+            </label>
+            <button class="icon-btn" id="themeBtn" aria-label="Changer de thème">◐</button>
+            <button class="icon-btn burger" id="burgerBtn" aria-label="Menu">☰</button>
+        </div>
+
+    </div>
+</header>
+
+<main>
+    <!-- =====================================================
+         EN-TÊTE DE PAGE
+         ===================================================== -->
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">Formule 1 · Équipes</p>
+            <h1 class="page-hero__title">Les <em>écuries</em></h1>
+            <p class="page-hero__text">
+                Chaque écurie, saison par saison : classement, points, victoires et pilotes.
+                Remontez le temps jusqu'en 1958, la première saison du championnat constructeurs.
+            </p>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         FILTRES
+         ===================================================== -->
+    <section class="section section--tight">
+        <div class="container">
+            <div class="toolbar">
+                <label class="field">
+                    <span class="field__label">Saison</span>
+                    <!-- Les années sont ajoutées automatiquement par equipe.js -->
+                    <select id="seasonSelect" class="field__input"></select>
+                </label>
+
+                <label class="field field--grow">
+                    <span class="field__label">Rechercher</span>
+                    <input type="search" id="teamSearch" class="field__input" placeholder="Écurie, pilote, pays…">
+                </label>
+
+                <p class="toolbar__count" id="teamCount"></p>
+            </div>
+
+            <!-- Les cartes des écuries sont créées par equipe.js grâce à l'API -->
+            <div class="teams" id="teams">
+                <div class="team team--loading"></div>
+                <div class="team team--loading"></div>
+                <div class="team team--loading"></div>
+            </div>
+
+            <p class="empty" id="teamsEmpty" hidden>Aucune écurie ne correspond à ta recherche.</p>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>Overtake est un site de fans indépendant, sans lien avec Formula One Group ni la FIA.</p>
+    </div>
+</footer>
+
+<script src="js/index.js"></script>
+<script src="js/equipe.js"></script>
 </body>
 </html>
